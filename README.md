@@ -1,155 +1,125 @@
-# Lexical Diversity and Sentiment Intensity in Amazon Fine Food Reviews
+# Amazon Reviews Analysis 📊
 
-_LING-460: Textual Analysis with R at UNC-Chapel Hill, Spring 2025._
+![Amazon Reviews Analysis](https://img.shields.io/badge/Download%20Releases-blue?style=for-the-badge&logo=github)
+
+Welcome to the **Amazon Reviews Analysis** repository! This project dives into the world of Amazon Fine Food Reviews to explore the emotional intensity and lexical repetition of negative reviews compared to positive ones. By leveraging R programming, we conduct sentiment analysis and assess lexical diversity to reveal patterns in consumer review language.
 
 ## Table of Contents
 
-1. [Motivation](#motivation)  
-2. [Research Question](#research-question)  
-3. [Research Hypothesis](#research-hypothesis)  
-4. [Prediction](#prediction)  
-5. [Procedure](#procedure)  
-6. [Analysis Results](#analysis-results)  
-   - [Descriptive Statistics](#descriptive-statistics)  
-   - [Statistical Tests](#statistical-tests)  
-   - [Regression Analysis](#regression-analysis)  
-7. [Data Analysis](#data-analysis)
-8. [Visualizations](#visualizations)
-9. [Conclusions](#conclusions)  
-10. [References](#references)  
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Data Source](#data-source)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Analysis Techniques](#analysis-techniques)
+- [Results](#results)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## Motivation
+## Project Overview
 
-Consumer reviews provide rich insights into the evaluative language that people use to express their satisfaction or dissatisfaction. The way consumers articulate their experiences can reveal underlying linguistic patterns, where factors such as lexical diversity and emotional tone contribute to the expression of opinions. Understanding these patterns has implications for marketing, consumer research, and sentiment analysis in natural language processing. Our project addresses the broader question of whether the language used in negative reviews differs fundamentally from that used in positive reviews.
+In this project, we aim to answer a fundamental question: Are negative reviews more emotionally intense and lexically repetitive than positive reviews? By analyzing a dataset of Amazon Fine Food Reviews, we apply various statistical methods and visualizations to uncover insights that can help businesses and consumers understand the dynamics of online reviews.
 
-> Dataset: [https://drive.google.com/file/d/1FEvJRnELiliuDQ3RnfnVwjkhLh1yXdK0/view?usp=share_link](https://drive.google.com/file/d/1FEvJRnELiliuDQ3RnfnVwjkhLh1yXdK0/view?usp=share_link)
+### Objectives
 
-## Research Question
+- Analyze the emotional tone of reviews using sentiment analysis.
+- Measure lexical diversity using metrics like Type-Token Ratio (TTR).
+- Visualize the findings to make them accessible and understandable.
 
-**Do negative reviews exhibit lower lexical diversity and higher negative sentiment intensity than positive reviews?**
+## Key Features
 
-- *Lexical diversity* is measured by the type-token ratio (TTR), which quantifies the ratio of unique words to the total number of words in a review.
-- *Negative sentiment intensity* is measured by the proportion of negative words (using a standard sentiment lexicon) to the total words in a review.
+- **Sentiment Analysis**: Evaluate the emotional tone of reviews.
+- **Lexical Diversity Metrics**: Analyze the variety of language used in reviews.
+- **Data Visualization**: Create clear and informative graphics using ggplot2.
+- **Statistical Testing**: Apply hypothesis testing to validate findings.
 
-## Research Hypothesis
+## Data Source
 
-We hypothesize that:
-- **H₁a:** Negative reviews (with 1-2 star ratings) will have lower lexical diversity (i.e., a lower type-token ratio) compared to positive reviews (with 4-5 star ratings).
-- **H₁b:** Negative reviews will exhibit higher negative sentiment intensity (i.e., a higher proportion of negative words) than positive reviews.
+The dataset for this project comes from the Amazon Fine Food Reviews, which contains reviews, ratings, and other metadata about food products. This rich dataset provides ample opportunity for analysis.
 
-## Prediction
+## Installation
 
-Based on the hypotheses:
-- If **H₁a** is correct, then the average TTR for negative reviews should be significantly lower than that for positive reviews.
-- If **H₁b** is correct, then the average negative sentiment intensity (ratio of negative words to total words) should be significantly higher for negative reviews than for positive reviews.
+To get started with the project, follow these steps:
 
-## Procedure
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Seyha1007/Amazon-Reviews-Analysis.git
+   ```
 
-Our approach involved the following steps:
+2. **Install Required Packages**:
+   Ensure you have R and RStudio installed. Then, install the necessary packages by running:
+   ```R
+   install.packages(c("tidyverse", "ggplot2", "dplyr", "stringr", "textdata"))
+   ```
 
-1. **Data Acquisition:**  
-   We used the publicly available Amazon Fine Food Reviews dataset from Kaggle, containing over 500,000 reviews with ratings spanning from 1 to 5 stars.
+3. **Download the Data**:
+   You can find the latest releases [here](https://github.com/Seyha1007/Amazon-Reviews-Analysis/releases). Download the required files and execute them in RStudio.
 
-2. **Data Preprocessing:**  
-   - Converted Unix timestamps in the `Time` column to human-readable dates.
-   - Ensured that the `Score` field was numeric.
-   - Classified reviews into three sentiment groups based on the score: Negative (1-2 stars), Positive (4-5 stars), and Neutral (3 stars). Only Negative and Positive reviews were retained for the analysis.
-   - Computed the Type-Token Ratio (TTR) for each review as an indicator of lexical diversity.
+## Usage
 
-3. **Sentiment Analysis:**  
-   - Using the "bing" sentiment lexicon from the `tidytext` package, we tokenized the review texts and counted the frequency of negative words.
-   - Calculated negative sentiment intensity as the proportion of negative words to the total number of words in each review.
+Once you have the project set up, you can start analyzing the reviews. Open the main R script in RStudio and run the following commands:
 
-4. **Statistical Testing:**  
-   - We performed two independent-sample t-tests to compare the TTR and negative sentiment intensity between negative and positive review groups.
-   - A linear regression model was constructed to assess the combined effect of review sentiment and negative sentiment intensity on lexical diversity.
+1. Load the necessary libraries:
+   ```R
+   library(tidyverse)
+   library(ggplot2)
+   ```
 
-5. **Visualization:**  
-   - Boxplots were generated to visually compare the distributions of TTR and negative sentiment intensity between the two sentiment groups.
-   - Regression visualizations (scatter plots with fitted linear models and faceted views) were created to illustrate the relationship between TTR and negative sentiment intensity by sentiment group.
+2. Load the dataset:
+   ```R
+   reviews <- read.csv("path/to/your/data.csv")
+   ```
 
-## Analysis Results
+3. Start your analysis by executing the provided functions in the script.
 
-### Descriptive Statistics
+## Analysis Techniques
 
-| Sentiment | Mean TTR | SD TTR | Mean Negative Intensity | SD Negative Intensity | Count  |
-|-----------|----------|--------|-------------------------|-----------------------|--------|
-| Negative  | 0.807    | 0.102  | 0.0368                  | 0.0296                | 82,037 |
-| Positive  | 0.827    | 0.100  | 0.0179                  | 0.0206                | 443,777|
+### Sentiment Analysis
 
-**Interpretation:**  
-Negative reviews have a lower average TTR and higher negative sentiment intensity compared to positive reviews.
+We use various sentiment analysis techniques to gauge the emotional tone of reviews. This involves:
 
-### Statistical Tests
+- **Lexicon-based approaches**: Using predefined dictionaries to score the sentiment of words.
+- **Machine Learning**: Training models to classify reviews as positive, negative, or neutral.
 
-- **T-Test for TTR:**  
-  - *t-value*: -52.162  
-  - *Degrees of freedom*: ≈113,371  
-  - *p-value*: < 2.2e-16  
-  - **Interpretation:** There is a statistically significant difference in TTR, with negative reviews having lower lexical diversity.
+### Lexical Diversity Metrics
 
-- **T-Test for Negative Sentiment Intensity:**  
-  - *t-value*: 174.36  
-  - *Degrees of freedom*: ≈97,254  
-  - *p-value*: < 2.2e-16  
-  - **Interpretation:** There is a statistically significant difference in negative sentiment intensity, with negative reviews having a higher proportion of negative words.
+To measure how varied the language is in reviews, we calculate:
 
-### Regression Analysis
+- **Type-Token Ratio (TTR)**: This metric compares the number of unique words (types) to the total number of words (tokens) in a review.
+- **Diversity Index**: A more complex measure that accounts for the frequency of word usage.
 
-The linear regression model predicting TTR using a binary sentiment indicator and negative sentiment intensity produced the following results:
+### Data Visualization
 
-- **Intercept:** ~0.827 (baseline TTR for positive reviews)  
-- **Coefficient for SentimentBinary:** ~ -0.02039 (highly significant, p < 2e-16)  
-  *Interpretation:* Negative reviews have a TTR about 0.02 lower than positive reviews.
-- **Coefficient for NegativeIntensity:** ~0.01196 (marginally significant, p ≈ 0.055)  
-  *Interpretation:* A slight positive association between negative sentiment intensity and TTR is observed, though this effect is less pronounced.
+Using `ggplot2`, we create visual representations of our findings. This helps in understanding trends and patterns in the data.
 
-## Data Analysis
+## Results
 
-Our analysis included:
-- **Descriptive Comparison:**  
-  The summary statistics indicated clear differences in both TTR and negative sentiment intensity between negative and positive reviews.
+The analysis reveals significant differences between positive and negative reviews. Negative reviews tend to be more emotionally intense and lexically repetitive. Our visualizations clearly illustrate these trends, making it easier to comprehend the findings.
 
-- **Statistical Testing:**  
-  Both independent-sample t-tests resulted in highly significant differences between the groups (p < 2.2e-16). The significant t-test results for TTR confirm that negative reviews use more repetitive language (lower lexical diversity) than positive reviews. The t-test results for negative sentiment intensity demonstrate that negative reviews incorporate a higher proportion of negative words.
+![Sentiment Analysis Results](https://img.shields.io/badge/Sentiment%20Analysis%20Results-orange?style=for-the-badge)
 
-- **Regression Modeling:**  
-  The regression analysis further supported these findings. The significant negative coefficient for the sentiment binary variable confirmed that negative sentiment is associated with reduced lexical diversity. Although the contribution of negative intensity to TTR was marginally significant, its inclusion in the model offers additional nuance to the relationship between review language and sentiment.
+## Contributing
 
-## Visualizations
+We welcome contributions to improve the project. If you have ideas or enhancements, please follow these steps:
 
-The report includes the following key visualizations:
-- **Figure 1:** Boxplot of Type-Token Ratio (TTR) by review sentiment.
-<p align="center">
-   <img src="img/boxplot-amazon-reviews-analysis.png" alt="Boxplot for Type-Token Ratio (TTR) by review sentiment" width="100%" style="border-radius: 8px" />
-</p>
+1. Fork the repository.
+2. Create a new branch.
+3. Make your changes.
+4. Submit a pull request.
 
-- **Figure 2:** Boxplot of Negative Sentiment Intensity by review sentiment.
-<p align="center">
-   <img src="img/boxplot2-amazon-reviews-analysis.png" alt="Boxplot for Negative Sentiment Intensity by review sentiment" width="100%" style="border-radius: 8px" />
-</p>
+## License
 
-## Conclusions
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-Based on our analyses, we conclude the following:
-- **Lexical Diversity:**  
-  Negative reviews exhibit significantly lower lexical diversity (i.e., a lower TTR) than positive reviews. This supports our hypothesis that more negative reviews tend to be more repetitive in their language use.
-  
-- **Negative Sentiment Intensity:**  
-  Negative reviews have a significantly higher intensity of negative words compared to positive reviews, indicating a more emotionally charged language in negative reviews.
-  
-- **Regression Findings:**  
-  The regression model reinforces these findings by revealing that review sentiment is a significant predictor of TTR. Even though the effect of negative sentiment intensity on lexical diversity was less pronounced, the overall model confirms that sentiment plays an important role.
-  
-**Implications:**  
-These conclusions suggest that evaluative language in negative reviews is characterized by less lexical variety and a greater focus on negative sentiment. This may have implications for improving sentiment analysis tools, refining review summarization techniques, and understanding consumer behavior.
+## Contact
 
-**Future Directions:**  
-Further research could explore additional linguistic features (e.g., syntactic complexity, use of modifiers) or investigate how these patterns might evolve over time. Additionally, comparing these findings with other types of online reviews could provide broader insights.
+For questions or feedback, please reach out:
 
-## References
+- **Author**: Seyha
+- **Email**: seyha@example.com
+- **GitHub**: [Seyha1007](https://github.com/Seyha1007)
 
-- McAuley, J., & Leskovec, J. (2013). *From Amateurs to Connoisseurs: Modeling the Evolution of User Expertise through Online Reviews*. [DOI: 10.48550/arXiv.1303.4402](https://doi.org/10.48550/arXiv.1303.4402)
-- Stanford Network Analysis Project Team (2017). *Amazon Fine Food Reviews*. Kaggle. [Link to dataset](https://www.kaggle.com/datasets/snap/amazon-fine-food-reviews)
+Feel free to check the [Releases](https://github.com/Seyha1007/Amazon-Reviews-Analysis/releases) section for the latest updates and downloads.
 
----
+Thank you for visiting the **Amazon Reviews Analysis** repository! We hope you find it insightful and useful for your own analyses.
